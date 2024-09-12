@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ECommMVC.Entities.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.AntiForgeryToken()
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Message)</th>
+            <th>@Html.DisplayNameFor(model => model.User)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Message)</td>
+            @if(item.User != null)
+                {
+                    <td>@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <button class="btn btn-danger btn-sm" onclick="deleteEntity(@item.ID, 'Ticket')">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

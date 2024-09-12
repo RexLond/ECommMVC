@@ -1,0 +1,76 @@
+﻿@model ECommMVC.Entities.Coupon
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Coupon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" id="codeInput"/>
+                <span asp-validation-for="Code" class="text-danger"></span>
+                <button type="button" class="btn btn-secondary" onclick="generateRandomString()">Rastgele Üret</button>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" step="0.01" type="number" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivatedAt" class="control-label"></label>
+                <input asp-for="ActivatedAt" class="form-control"/>
+                <span asp-validation-for="ActivatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassivedAt" class="control-label"></label>
+                <input asp-for="PassivedAt" class="form-control"/>
+                <span asp-validation-for="PassivedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    function generateRandomString() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let randomString = '';
+        const stringLength = 10; // Üretilecek rastgele kombinasyonun uzunluğu
+
+        for (let i = 0; i < stringLength; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            randomString += characters[randomIndex];
+        }
+
+        // Input alanına rastgele üretilen kombinasyonu yaz
+        document.getElementById("codeInput").value = randomString;
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

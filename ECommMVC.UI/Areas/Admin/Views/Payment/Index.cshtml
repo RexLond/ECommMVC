@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ECommMVC.Entities.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.AntiForgeryToken()
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PaymentMethod)</th>
+            <th>@Html.DisplayNameFor(model => model.Freight)</th>
+            <th>@Html.DisplayNameFor(model => model.InvoiceNo)</th>
+            <th>@Html.DisplayNameFor(model => model.OrderID)</th>
+            <th>@Html.DisplayNameFor(model => model.User)</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.PaymentMethod)</td>
+            <td>@Html.DisplayFor(modelItem => item.Freight)</td>
+            <td>@Html.DisplayFor(modelItem => item.InvoiceNo)</td>
+            <td>@Html.DisplayFor(modelItem => item.OrderID)</td>
+            <td>@Html.DisplayFor(modelItem => item.User.Address)</td>
+            <td>
+            <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+            <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>
+            <button class="btn btn-danger btn-sm" onclick="deleteEntity(@item.ID, 'Payment')">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

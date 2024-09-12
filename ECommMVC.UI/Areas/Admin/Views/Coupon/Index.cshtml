@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ECommMVC.Entities.Coupon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.AntiForgeryToken()
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-sm table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ID)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Code)</th>
+            <th>@Html.DisplayNameFor(model => model.Discount)</th>
+            <th>@Html.DisplayNameFor(model => model.ActivatedAt)</th>
+            <th>@Html.DisplayNameFor(model => model.PassivedAt)</th>
+            <th class="tableActionButtons-L"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.Code)</td>
+            <td>@Html.DisplayFor(modelItem => item.Discount)</td>
+            <td>@Html.DisplayFor(modelItem => item.ActivatedAt)</td>
+            <td>@Html.DisplayFor(modelItem => item.PassivedAt)</td>
+            <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <button class="btn btn-danger btn-sm" onclick="deleteEntity(@item.ID, 'Coupon')">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

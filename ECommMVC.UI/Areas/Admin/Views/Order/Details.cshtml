@@ -1,0 +1,105 @@
+﻿@model ECommMVC.Entities.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Freight)</dt>
+        <dd class = "col-sm-10">@ViewBag.TotalPrice</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.OrderDate)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.OrderDate)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShippedAt)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShippedAt)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.DeliveredAt)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.DeliveredAt)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShipAddress)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShipAddress)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShipCity)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShipCity)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShipRegion)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShipRegion)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShipPostalCode)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShipPostalCode)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.ShipCountry)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.ShipCountry)</dd>
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Shipper)</dt>
+        @if(Model.Shipper != null)
+        {
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Shipper.Name)</dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">No Shipper</dd>
+        }
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.User)</dt>
+        @if(Model.User != null)
+        {
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)</dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">No User</dd>
+        }
+        
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Payment)</dt>
+        @if(Model.Payment != null)
+        {
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Payment.ID)</dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">No Payment</dd>
+        }
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.OrderDetails)</dt>
+        <dd>Add Product</dd>
+        <dt>
+            <table class="table table-sm table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>VAT</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.OrderDetails != null)
+                    {
+                        @foreach (var item in ViewBag.OrderDetails)
+                        {
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UnitPrice</td>
+                                <td>@item.VAT</td>
+                                <td>@item.Discount</td>
+                                <td>@item.TotalPrice</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">No details</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dt>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

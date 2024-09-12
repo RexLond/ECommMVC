@@ -1,0 +1,44 @@
+﻿BU MESAJI MUTLAKA OKUYUNUZ!
+📌 Merhaba arkadaşlar, 14 Temmuz 2024 Pazar günü itibarı ile eğitimimizi tamamlamış bulunmaktayız. 👏🏻
+
+Uygulamaya yönelik keyifli anlatımı ile emeklerinden ötürü, Müjdat Hocamıza ve katılımlarınızdan ötürü siz değerli öğrencilerimize teşekkür ederiz. 
+
+Eğitim süreci bitti, artık proje geliştirme süreci başlıyor! Eğitmenimizin de sizlere bilgisini verdiği üzere bireysel veya en fazla 2 kişilik gruplar halinde e-ticaret projesi büyüklüğünde (Front-End ve Back-End modülleri bulunan) bir Web Projesi teslim etmenizi beklemekteyiz. 2 aylık Proje geliştirme sürecinizde takıldığınız yerlerde ilk önce grubunuzdaki arkadaşlara danışıp, internet araştırması yaptıktan sonra çözemediğiniz konularda eğitmenimizden destek alabilirsiniz. 
+
+Başarı sertifikası alabilmeniz için, sizlerden projelerinizi oluştururken belirli standartlara ve gerekliliklere uymanız beklenmektedir. Projenizi yaparken dikkate almanız gereken bazı detaylar aşağıdaki gibidir:
+
++1-Admin Paneli: Projenizin bir yönetim paneli içermesi, verilerinizi düzenlemeniz ve kontrol etmeniz için önemlidir.
++2-Generic Repository Pattern: Veri erişim katmanınızda Generic Repository Pattern'i kullanmanız, veritabanı işlemlerini daha düzenli ve yönetilebilir hale getirecektir.
+3-Üyelik Sistemi: Kullanıcıların sisteme kaydolabileceği ve oturum açabileceği bir üyelik sistemi eklemeniz gerekmektedir.
+4-E-Ticaret Kapsamında Bir Proje: Projeniz bir web sitesinden ziyade sepet, üyelik, ödeme formu, ürün filtreleme vb. modülleri içeren bir e-ticaret kapsamında olmalıdır.
++5-SOLID Prensipleri: Yazılım tasarımınızın SOLID prensiplerine uygun olmasına dikkat ediniz. Bu prensipler, yazılımınızın daha esnek, sürdürülebilir ve anlaşılır olmasına yardımcı olur.
+6-Frontend: Kullanıcı arayüzü geliştirirken modern ve kullanıcı dostu bir tasarım kullanmaya özen gösteriniz. (Hazır şablon/template bir arayüz üzerinden de ilerleyebilirsiniz)
++7-EF Core: Veritabanı işlemleri için Entity Framework Core'u tercih etmeniz, veritabanıyla etkileşimi kolaylaştırır.
+8-Web API: projenizde bir Web API katmanı ekleyerek diğer uygulamaların veya servislerin projenizle etkileşim kurmasını sağlayabilirsiniz, en azından bir CRUD işlemi gerçekleştirmeniz faydalı olacaktır.
+
+Son olarak, projelerinizi Github platformuna yüklemeniz önemlidir. Bu, hem işverenlerin yeteneklerinizi değerlendirmesi hem de  sektörde çok kullanılan bu platfomu iyice öğrenmenizi sağlamaktadır. Projenizin Github linkini eğitmeninize ilettikten sonra ortalama 5-10dk sunum yapmanız gerekmektedir. (Sunum esnasında eğitmeniniz bazı kod yapılarında değişiklik isteyebilir, projenizi iyileştirmenizi sizlerden talep edebilmektedir.)
+
+Eğitmeniniz değerlendirmesi sonrası 100 üzerinden 80 puan ve üzeri alabilen öğrencilerimiz başarı sertifikası almaya hak kazanacaktır. Başarı sertifikası almaya hak kazanmış öğrencilerimizden iş arayışı bulunanların, bizlere güncel CV'sini iletmelerini rica ederiz. 
+
+Not: Değerlendirme sonucu 80 puanın altında kalan öğrencilerimiz gerekli noktalardaki geliştirmeleri yaparak, projesini tamamlayıp değerlendirilmesi için tekrardan iletebilirler.
+
+Proje son teslim tarihi: 14 Eylül 2024
+
+Projenizin Github linkini ve proje tanıtım videonuzu proje@infotechacademy.com.tr adresine de mail olarak iletebilirseniz kariyeriniz açısından biz de ilgili firmalara iletmiş olacağız (teyit açısından ulaştı bilgisi için bu numaraya özelden mesaj atmanızı rica ederiz)
+
+Örnek proje ve tanıtım videoları: https://www.youtube.com/c/InfotechAcademy/videos
+
+🧾 Sertifikalar:
+Katılım Sertifikası: %50 ve üzeri katılım sağlamış arkadaşlarımıza PDF olarak iletilecektir.
+Başarı Sertifikası: Bitirme projesi 80 puan ve üzeri alan arkadaşlarımıza PDF veya tercihe göre Baskılı olarak verebileceğimiz bir sertifikadır.
+Üniversite Onaylı Sertifika(E-Devlet'te Görüntülenebilir): Bitirme projesi 80 puan ve üzeri alan arkadaşlarımıza Baskılı olarak verebileceğimiz bir sertifikadır. (Anlaşmalı kuruma ödenecek sertifika bedeli: 750TL)
+Europass Uluslararası Geçerli Sertifika: Bitirme projesi 80 puan ve üzeri alan arkadaşlarımıza Baskılı olarak verebileceğimiz bir sertifikadır. (Anlaşmalı kuruma ödenecek sertifika bedeli: 1250TL)
+Sertifikalar hakkında detaylı bilgi için: https://www.infotechacademy.com.tr/sertifikalar
+
+👔 Hediye eğitimler: Python Eğitimi ve Kariyer Eğitimi için ise ilerleyen süreçlerde ayrıca bilgi verilecektir. Duyuruları takip ediniz.
+
+🎁 Son olarak farklı eğitimlerimize de katılmak isteyen arkadaşlarımız için tüm eğitimlerimizde geçerli %25 indirim hakkı tanımış bulunuyoruz. Sizin referansınızla eğitimlerimize katılmak isteyen diğer arkadaşlarınız için ise %20'lik bir indirim hakkı sağlıyoruz. 
+
+Yardımcı olacağımızı düşündüğünüz herhangi bir konu olursa her zaman bizlerden destek alabilirsiniz. 
+
+Kodlama dolu güzel bir kariyer dileriz. 🙏🏻

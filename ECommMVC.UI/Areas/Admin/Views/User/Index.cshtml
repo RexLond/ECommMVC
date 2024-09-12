@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ECommMVC.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.AntiForgeryToken()
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Identity)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            @* <th>@Html.DisplayNameFor(model => model.IsEmailConfirmed)</th> *@
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            @* <th>@Html.DisplayNameFor(model => model.Address)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.Region)</th>
+            <th>@Html.DisplayNameFor(model => model.PostalCode)</th>
+            <th>@Html.DisplayNameFor(model => model.Country)</th> *@
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            @* <th>@Html.DisplayNameFor(model => model.IsPhoneConfirmed)</th> *@
+            @* <th>@Html.DisplayNameFor(model => model.Photo)</th> *@
+            <th>@Html.DisplayNameFor(model => model.IsAdmin)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Identity)</td>
+            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            @* <td>@Html.DisplayFor(modelItem => item.IsEmailConfirmed)</td> *@
+            <td>@Html.DisplayFor(modelItem => item.Password)</td>
+            @* <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.Region)</td>
+            <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
+            <td>@Html.DisplayFor(modelItem => item.Country)</td> *@
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            @* <td>@Html.DisplayFor(modelItem => item.IsPhoneConfirmed)</td> *@
+            @* <td>@Html.DisplayFor(modelItem => item.Photo)</td> *@
+            <td>@Html.DisplayFor(modelItem => item.IsAdmin)</td>
+            <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <button class="btn btn-danger btn-sm" onclick="deleteEntity(@item.ID, 'User')">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

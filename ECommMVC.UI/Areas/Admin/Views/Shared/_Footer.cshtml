@@ -1,0 +1,48 @@
+﻿<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2021</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+<script type="text/javascript">
+    function deleteEntity(id, entity) {
+        var baseUrl = '@Url.Action("Delete", "DefaultController")';
+        var url = baseUrl.replace("DefaultController", entity);
+        showModal(
+            'Delete',
+            'Are you sure for delete?',
+            function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Bir hata oluştu: " + xhr.responseText);
+                    }
+                });
+
+                var myModalEl = document.getElementById('confirmModal');
+                var modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+            }
+        );
+    }
+</script>
