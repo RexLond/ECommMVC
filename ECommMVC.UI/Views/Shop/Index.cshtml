@@ -16,16 +16,6 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">@product.Name</h5>
-                                <!-- Product reviews-->
-                                @* <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                </div> *@
-                                <!-- Product price-->
-
                                 @if(product.Discount > 0)
                                 {
                                     <span class="text-muted text-decoration-line-through">@((product.UnitPrice * (1 + product.VAT)).ToString("N2"))&#8378;</span>
@@ -36,7 +26,7 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                <a class="btn btn-outline-dark mt-auto" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@product.ID" asp-route-quantity="1">Add to cart</a>
                                 <a class="btn btn-outline-dark mt-auto" asp-action="Details" asp-controller="Shop" asp-route-id="@product.ID">Details</a>
                             </div>
                         </div>

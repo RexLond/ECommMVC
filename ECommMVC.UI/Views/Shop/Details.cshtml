@@ -12,6 +12,7 @@
             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="/images/product/@(Model.Image ?? "empty.bmp")" alt="" /></div>
             <div class="col-md-6">
                 <div class="small mb-1">Product ID: @Model.ID</div>
+                <input type="hidden" id="id" name="id" value="@Model.ID" />
                 <h1 class="display-5 fw-bolder">@Model.Name</h1>
                 <div class="fs-5 mb-5">
                     @if(Model.Discount > 0)
@@ -22,10 +23,10 @@
                 </div>
                 <div class="d-flex">
                     <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 5rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <a id="addToCart" class="btn btn-outline-dark flex-shrink-0" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ID" asp-route-quantity="">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
-                    </button>
+                    </a>
                 </div>
                 <p class="lead">@Html.Raw((Model.Description ?? ""))</p>
             </div>
@@ -64,3 +65,14 @@
         </div>
     }
 </div>
+
+<script>
+    document.getElementById('addToCart').addEventListener('click', function (event) {
+        event.preventDefault(); // Sayfanın yeniden yüklenmesini engeller
+        var quantity = document.getElementById('inputQuantity').value;
+        var id = document.getElementById('id').value;
+        // URL'yi oluştur ve yönlendir
+        var url = '@Url.Action("AddToCart", "Cart")' + '/' + id + '?quantity=' + quantity;
+        window.location.href = url;
+    });
+</script>

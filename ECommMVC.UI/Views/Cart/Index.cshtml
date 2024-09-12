@@ -1,0 +1,35 @@
+﻿@model List<ECommMVC.Entities.CartItem>
+
+<h2>Your Cart</h2>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@(item.Price * item.Quantity).ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Cart">Checkout</a>
+    <a class="btn btn-danger" asp-action="ClearCart" asp-controller="Cart">Clear Cart</a>
+}

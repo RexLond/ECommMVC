@@ -95,7 +95,7 @@ namespace ECommMVC.UI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public List<int> GetPageRange(int totalPage, int pageNumber)
+        private List<int> GetPageRange(int totalPage, int pageNumber)
         {
             List<int> pageRange = new List<int>();
 

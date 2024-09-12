@@ -3,6 +3,7 @@ using ECommMVC.BL.Concrete;
 using ECommMVC.DAL.Abstact;
 using ECommMVC.DAL.Concrete;
 using ECommMVC.DAL.Context;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -39,7 +40,7 @@ builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped<ITicketService, TicketManager>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserManager>();
-
+builder.Services.AddScoped<ICartService, CartManager>();
 
 var app = builder.Build();
 
