@@ -28,7 +28,22 @@
                     <!-- <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
                     @await Component.InvokeAsync("Category")
                 </ul>
-                    <a class="btn btn-outline-dark" asp-action="Index" asp-controller="Cart">
+                @if(!User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-outline-dark mx-1" asp-action="Login" asp-controller="Security">Login</a>
+                }
+                else
+                {
+                    <span>@User.FindFirst("FirstName")?.Value @User.FindFirst("LastName")?.Value</span>
+                    <a class="btn btn-outline-dark mx-1" asp-action="Logout" asp-controller="Security">Logout</a>
+                    <a class="btn btn-outline-dark mx-1" asp-action="Index" asp-controller="UserOrder">My Orders</a>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-outline-dark mx-1" asp-action="Index" asp-controller="Admin">Admin</a>
+                    }
+                }
+                
+                    <a class="btn btn-outline-dark mx-1" asp-action="Index" asp-controller="Cart">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">@await Component.InvokeAsync("Cart")</span>

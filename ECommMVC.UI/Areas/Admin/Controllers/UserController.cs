@@ -1,10 +1,12 @@
 ﻿using ECommMVC.BL.Abstact;
 using ECommMVC.Entities;
 using ECommMVC.UI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommMVC.UI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -32,17 +34,25 @@ namespace ECommMVC.UI.Areas.Admin.Controllers
         {
             if (user != null)
             {
-                if (photo != null && photo.Length > 0)
+                if (await _userService.CheckMail(user.Email) == false)
                 {
-                    string imageName = await FileSystem.SaveFileAsync(photo, "wwwroot/images/User");
-                    user.Photo = imageName;
+                    if (photo != null && photo.Length > 0)
+                    {
+                        string imageName = await FileSystem.SaveFileAsync(photo, "wwwroot/images/User");
+                        user.Photo = imageName;
+                    }
+
+                    await _userService.CreateAsync(user);
+                    return RedirectToAction("Index");
                 }
-                await _userService.CreateAsync(user);
-                return RedirectToAction("Index");
+                else
+                {
+                    throw new Exception("This email is already.");
+                }
             }
             else
             {
-                throw new Exception($"Image upload failed.");
+                throw new Exception($"User data null.");
             }
         }
 

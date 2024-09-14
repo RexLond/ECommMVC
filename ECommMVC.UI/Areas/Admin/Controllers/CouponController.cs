@@ -1,10 +1,12 @@
 ﻿using ECommMVC.BL.Abstact;
 using ECommMVC.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommMVC.UI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class CouponController : Controller
     {

@@ -3,6 +3,7 @@ using ECommMVC.BL.Concrete;
 using ECommMVC.DAL.Abstact;
 using ECommMVC.DAL.Concrete;
 using ECommMVC.DAL.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,14 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<ICartService, CartManager>();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => {
+        options.LoginPath = "/Security/Login";
+        options.AccessDeniedPath = "/Security/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,6 +61,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -11,5 +11,6 @@ namespace ECommMVC.BL.Abstact
     {
         Task<Order> GetByIdWithRefAsync(int id);
         Task<IEnumerable<Order>> GetAllWithRefAsync();
+        Task<Order> CreateOrderWithPaymentAsync(Order order, Payment payment); // Only BL
     }
 }

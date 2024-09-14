@@ -1,12 +1,14 @@
 using ECommMVC.BL.Abstact;
 using ECommMVC.Entities;
 using ECommMVC.UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Drawing.Printing;
 
 namespace ECommMVC.UI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

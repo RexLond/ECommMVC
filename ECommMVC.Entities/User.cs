@@ -23,7 +23,7 @@ namespace ECommMVC.Entities
         public required string Phone { get; set; }
         public bool IsPhoneConfirmed { get; set; } = false;
         public string? Photo { get; set; }
-        public bool IsAdmin { get; set; } = false;
+        public string? Role { get; set; } = "User";
 
         public virtual ICollection<Order>? Orders { get; set; }
         public virtual ICollection<Payment>? Payments { get; set; }

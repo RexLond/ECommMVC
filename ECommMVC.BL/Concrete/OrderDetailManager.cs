@@ -28,5 +28,10 @@ namespace ECommMVC.BL.Concrete
         {
             return await _orderDetailRepository.GetAllWithRefAsync();
         }
+
+        public async Task<List<OrderDetail>> CreateOrderDetailByListAsync(List<OrderDetail> orderDetails)
+        {
+            return await _orderDetailRepository.CreateOrderDetailByListAsync(orderDetails);
+        }
     }
 }

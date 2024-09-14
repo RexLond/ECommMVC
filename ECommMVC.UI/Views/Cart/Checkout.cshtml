@@ -1,0 +1,131 @@
+﻿@model ECommMVC.Entities.Checkout
+
+@{
+    ViewData["Title"] = "Checkout";
+
+    var cart = ViewBag.Cart as List<CartItem>;
+    var products = ViewBag.Products as IEnumerable<Product>;
+    var user = ViewBag.User as User;
+    var totalPrice = 0.00m;
+    var totalVAT = 0.00m;
+    var totalDiscount = 0.00m;
+    var totalPaid = 0.00m;
+}
+
+<h1>Checkout</h1>
+
+<form asp-action="Checkout" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group mb-2">
+        <label asp-for="PaymentType"></label>
+        <select asp-for="PaymentType" asp-items="ViewBag.PaymentTypes" class="form-control"></select>
+    </div>
+
+    @* <div id="creditCardInfo" class="mb-2" style="display:none;">
+        <div class="form-group">
+            <label asp-for="CreditCardNumber"></label>
+            <input asp-for="CreditCardNumber" class="form-control" />
+            <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardName"></label>
+            <input asp-for="CreditCardName" class="form-control" />
+            <span asp-validation-for="CreditCardName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardExpiry"></label>
+            <input asp-for="CreditCardExpiry" class="form-control" />
+            <span asp-validation-for="CreditCardExpiry" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardCvc"></label>
+            <input asp-for="CreditCardCvc" class="form-control" />
+            <span asp-validation-for="CreditCardCvc" class="text-danger"></span>
+        </div>
+    </div> *@
+
+    <div class="card">
+        <div class="card-header">
+            Adress
+        </div>
+        <div class="card-body">
+            <div class="card-title">Cargo Adress</div>
+            <div class="card-text">@ViewBag.Address</div>
+        </div>
+        <hr class="m-0" />
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Product
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
+                        <th>VAT</th>
+                        <th>Discount</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in products)
+                    {
+                        var quantity = cart.First(x => x.ProductID == product.ID).Quantity;
+                        var totalProductPrice = (product.UnitPrice * quantity) * (1 + product.VAT) * (1 - product.Discount);
+
+                        totalPrice += product.UnitPrice;
+                        totalVAT += (product.UnitPrice * product.VAT);
+                        totalDiscount += (product.UnitPrice * product.Discount);
+                        totalPaid += totalProductPrice;
+
+                        <tr>
+                            <th>@product.ID</th>
+                            <th>@product.Name</th>
+                            <th>@product.UnitPrice.ToString("N2")</th>
+                            <th>@product.VAT.ToString("N2")</th>
+                            <th>@product.Discount.ToString("N2")</th>
+                            <th>@quantity</th>
+                            <th>@totalProductPrice.ToString("N2")</th>
+                            <th></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <hr class="m-0" />
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Total
+        </div>
+        <div class="card-body">
+            <div class="card-text">Total Price: @totalPrice.ToString("N2")</div>
+            <div class="card-text">Total VAT: @totalVAT.ToString("N2")</div>
+            <div class="card-text">Total Discount: @totalDiscount.ToString("N2")</div>
+            <div class="card-text">To be paid: @totalPaid.ToString("N2")</div>
+        </div>
+        <hr class="m-0" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>
+
+@* <script>
+    document.getElementById("PaymentType").addEventListener("change", function () {
+        var paymentType = this.value;
+        var creditCardInfo = document.getElementById("creditCardInfo");
+
+        if (paymentType == "2") { // CreditCard seçildiyse
+            creditCardInfo.style.display = "block";
+        } else {
+            creditCardInfo.style.display = "none";
+        }
+    });
+</script> *@

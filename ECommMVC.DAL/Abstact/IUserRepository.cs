@@ -9,5 +9,7 @@ namespace ECommMVC.DAL.Abstact
 {
     public interface IUserRepository : IGenericRepository<User>
     {
+        Task<User> GetUserByMailAndPassword(string email, string password);
+        Task<bool> CheckMail(string email);
     }
 }

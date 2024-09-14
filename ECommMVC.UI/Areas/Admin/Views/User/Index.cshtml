@@ -28,7 +28,7 @@
             <th>@Html.DisplayNameFor(model => model.Phone)</th>
             @* <th>@Html.DisplayNameFor(model => model.IsPhoneConfirmed)</th> *@
             @* <th>@Html.DisplayNameFor(model => model.Photo)</th> *@
-            <th>@Html.DisplayNameFor(model => model.IsAdmin)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
             <th></th>
         </tr>
     </thead>
@@ -49,7 +49,7 @@
             <td>@Html.DisplayFor(modelItem => item.Phone)</td>
             @* <td>@Html.DisplayFor(modelItem => item.IsPhoneConfirmed)</td> *@
             @* <td>@Html.DisplayFor(modelItem => item.Photo)</td> *@
-            <td>@Html.DisplayFor(modelItem => item.IsAdmin)</td>
+            <td>@Html.DisplayFor(modelItem => item.Role)</td>
             <td>
                     <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
                     <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>

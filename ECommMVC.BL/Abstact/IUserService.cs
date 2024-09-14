@@ -9,6 +9,7 @@ namespace ECommMVC.BL.Abstact
 {
     public interface IUserService : IGenericService<User>
     {
-
+        Task<User> GetUserByMailAndPassword(string email, string password);
+        Task<bool> CheckMail(string email);
     }
 }

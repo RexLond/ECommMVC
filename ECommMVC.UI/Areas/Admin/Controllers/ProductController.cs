@@ -3,9 +3,11 @@ using ECommMVC.Entities;
 using Microsoft.AspNetCore.Mvc;
 using ECommMVC.UI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommMVC.UI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class ProductController : Controller
     {

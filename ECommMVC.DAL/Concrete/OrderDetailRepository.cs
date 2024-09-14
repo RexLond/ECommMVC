@@ -46,5 +46,22 @@ namespace ECommMVC.DAL.Concrete
                 throw new Exception($"Get all data failed. Error: {ex.Message}", ex);
             }
         }
+
+        public async Task<List<OrderDetail>> CreateOrderDetailByListAsync(List<OrderDetail> orderDetails)
+        {
+            try
+            {
+                foreach (var orderDetail in orderDetails)
+                {
+                    await _context.Set<OrderDetail>().AddAsync(orderDetail);
+                    await _context.SaveChangesAsync();
+                }
+                return orderDetails;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Data list crate failed. Error: {ex.Message}", ex);
+            }
+        }
     }
 }

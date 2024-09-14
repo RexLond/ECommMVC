@@ -11,5 +11,6 @@ namespace ECommMVC.DAL.Abstact
     {
         Task<OrderDetail> GetByIdWithRefAsync(int id);
         Task<IEnumerable<OrderDetail>> GetAllWithRefAsync();
+        Task<List<OrderDetail>> CreateOrderDetailByListAsync(List<OrderDetail> orderDetails);
     }
 }

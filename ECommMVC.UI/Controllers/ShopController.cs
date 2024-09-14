@@ -1,10 +1,12 @@
 ﻿using ECommMVC.BL.Abstact;
 using ECommMVC.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing.Printing;
 
 namespace ECommMVC.UI.Controllers
 {
+    [AllowAnonymous]
     public class ShopController : Controller
     {
         private ICategoryService _categoryService;
