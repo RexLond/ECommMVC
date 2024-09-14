@@ -39,6 +39,7 @@ namespace ECommMVC.UI.Controllers
                     new Claim("FirstName", onLoginUser.FirstName),
                     new Claim("LastName", onLoginUser.LastName),
                     new Claim("Email", onLoginUser.Email),
+                    new Claim("Photo", onLoginUser.Photo ?? ""),
                     new Claim(ClaimTypes.Role, onLoginUser.Role ?? "User")
                 };
 

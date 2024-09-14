@@ -4,10 +4,7 @@ using ECommMVC.DAL.Abstact;
 using ECommMVC.DAL.Concrete;
 using ECommMVC.DAL.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
